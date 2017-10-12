@@ -7,3 +7,14 @@ Plan:
 - [ ] Upload to Mapbox using the [uploads](https://www.mapbox.com/api-documentation/#uploads) API.
 - [ ] Make a map with everything, like [this one](https://api.mapbox.com/styles/v1/robinkraft/cj8nn4lvp7yoq2ro1klhjltw8.html?fresh=true&title=true&access_token=pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx0NCgfSOE3HYbw#14.02/38.4891/-122.6985)
 - [ ] Blog about what worked, what didn't.
+
+Start downloading everything listed on DG site:
+
+```shell
+dirnames=( "105001000C598E00" "20300103003FD800SWIR" "103001007107C600" "1040010033CAE100" "1040010034C51100" "1040010033888D00" )
+
+for i in "${dirnames[@]}"
+do
+  cat files.txt | grep -v ovr | grep $i | xargs wget -P $i/
+done
+```
