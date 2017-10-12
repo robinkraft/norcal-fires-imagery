@@ -19,8 +19,9 @@ for i in "${dirnames[@]}"
 do
   cat files.txt | grep -v ovr | grep $i | xargs wget -P $i/
 done
-####
 ```
+
+####
 
 https://www.digitalglobe.com/opendata/santa-rosa-wildfires/post-event
 
