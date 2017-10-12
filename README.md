@@ -20,6 +20,8 @@ do
   cat files.txt | grep -v ovr | grep $i | xargs wget -P $i/
 done
 ####
+```
+
 https://www.digitalglobe.com/opendata/santa-rosa-wildfires/post-event
 
 Background reading
@@ -32,4 +34,3 @@ http://www.harrisgeospatial.com/Learn/Blogs/Blog-Details/TabId/2716/ArtMID/10198
 SWIR todos,:
 * create 6,3,1 3-band, 8-bit image
 * show along w/smokey visual data - slider of sorts http://microsites.digitalglobe.com/interactive/swir/
-```
