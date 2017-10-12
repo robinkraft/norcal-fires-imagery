@@ -21,11 +21,8 @@ do
 done
 ```
 
-####
 
-https://www.digitalglobe.com/opendata/santa-rosa-wildfires/post-event
-
-Background reading
+##### Background reading
 https://dg-cms-uploads-production.s3.amazonaws.com/uploads/document/file/1/ShortwaveInfrared-DS-SWIR_DS_0217.pdf
 http://blog.digitalglobe.com/technologies/revealing-the-hidden-world-with-shortwave-infrared-swir-imagery/
 http://blog.digitalglobe.com/technologies/our-eyes-can-play-tricks-on-us-but-shortwave-infrared-swir-imagery-reveals-all-part-1-of-2/?utm_source=Part-1-post&utm_medium=blog&utm_campaign=SWIR
