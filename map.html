@@ -60,7 +60,7 @@ var map = new mapboxgl.Map({
 });
 
 var geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
+    accessToken: mapboxgl.accessToken,
 });
 
 map.addControl(geocoder);
@@ -136,7 +136,7 @@ map.on('load', function() {
 <div id='legend' class='legend'>
   <h4>Fire aftermath</h4>
   <h5>
-    Covers:<br>
+    Covers areas around:<br>
     <li>Santa Rosa</li>
     <li>Sonoma</li>
     <li>Napa</li><br>
