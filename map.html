@@ -13,85 +13,25 @@
 </head>
 <body>
 
-<style>
-body {
-    overflow: hidden;
-}
-
-body * {
-   -webkit-touch-callout: none;
-     -webkit-user-select: none;
-        -moz-user-select: none;
-         -ms-user-select: none;
-             user-select: none;
-}
-
-.map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-}
-</style>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.1.0/mapbox-gl-compare.css' type='text/css' />
-
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
-<style>
-#geocoder-container > div {
-    min-width:50%;
-    margin-left:25%;
-}
-</style>
+<div id='map'></div>
 
-
-<!-- <div id='before' class='map'></div> -->
-<div id='after' class='map'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx0NCgfSOE3HYbw';
 
 var map = new mapboxgl.Map({
-    container: 'after',
+    container: 'map',
     style: 'mapbox://styles/robinkraft/cj8nn4lvp7yoq2ro1klhjltw8',
     center: [-122.6955, 38.4863],
     zoom: 13,
     hash:true
 });
 
-var geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-});
+map.addControl(new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+}));
 
-map.addControl(geocoder);
-
-// After the map style has loaded on the page, add a source layer and default
-// styling for a single point.
-map.on('load', function() {
-    map.addSource('single-point', {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": []
-        }
-    });
-
-    map.addLayer({
-        "id": "point",
-        "source": "single-point",
-        "type": "circle",
-        "paint": {
-            "circle-radius": 10,
-            "circle-color": "#007cbf"
-        }
-    });
-
-    // Listen for the `geocoder.input` event that is triggered when a user
-    // makes a selection and add a symbol that matches the result.
-    geocoder.on('result', function(ev) {
-        map.getSource('single-point').setData(ev.result.geometry);
-    });
-});
 
 </script>
 
