@@ -51,16 +51,7 @@ body * {
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx0NCgfSOE3HYbw';
 
-
-// var beforeMap = new mapboxgl.Map({
-//     container: 'before',
-//     style: 'mapbox://styles/mapbox/satellite-streets-v9',
-//     center: [-122.6955, 38.4863],
-//     zoom: 13,
-//     hash:true
-// });
-
-var afterMap = new mapboxgl.Map({
+var map = new mapboxgl.Map({
     container: 'after',
     style: 'mapbox://styles/robinkraft/cj8nn4lvp7yoq2ro1klhjltw8',
     center: [-122.6955, 38.4863],
@@ -68,21 +59,16 @@ var afterMap = new mapboxgl.Map({
     hash:true
 });
 
-// var afterMap = new mapboxgl.Compare(beforeMap, afterMap, {
-//     // Set this to enable comparing two maps by mouse movement:
-//     // mousemove: true
-// });
-
 var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
 });
 
-afterMap.addControl(geocoder);
+map.addControl(geocoder);
 
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
-afterMap.on('load', function() {
-    afterMap.addSource('single-point', {
+map.on('load', function() {
+    map.addSource('single-point', {
         "type": "geojson",
         "data": {
             "type": "FeatureCollection",
@@ -90,7 +76,7 @@ afterMap.on('load', function() {
         }
     });
 
-    afterMap.addLayer({
+    map.addLayer({
         "id": "point",
         "source": "single-point",
         "type": "circle",
@@ -103,7 +89,7 @@ afterMap.on('load', function() {
     // Listen for the `geocoder.input` event that is triggered when a user
     // makes a selection and add a symbol that matches the result.
     geocoder.on('result', function(ev) {
-        afterMap.getSource('single-point').setData(ev.result.geometry);
+        map.getSource('single-point').setData(ev.result.geometry);
     });
 });
 
