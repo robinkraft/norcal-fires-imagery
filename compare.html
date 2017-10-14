@@ -35,11 +35,26 @@ body {
     min-width:50%;
     margin-left:25%;
 }
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: absolute;
+    z-index: 99;
+}
 </style>
 
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
+<button class='button' onclick="myFunction()">Make share URL</button>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx0NCgfSOE3HYbw';
 
@@ -95,6 +110,15 @@ beforeMap.on('load', function() {
         beforeMap.getSource('single-point').setData(ev.result.geometry);
     });
 });
+
+function myFunction () {
+    var shareCenter = beforeMap.getCenter(),
+        shareZoom = beforeMap.getZoom();
+    var shareLat = shareCenter.lat,
+        shareLng = shareCenter.lng;
+
+    window.open("https://robinkraft.github.io/norcal-fires-imagery/map.html#" + shareZoom + "/" + shareLat+ "/" + shareLng, "_blank");
+}
 </script>
 
 <style>
