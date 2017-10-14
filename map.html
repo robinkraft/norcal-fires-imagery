@@ -52,14 +52,18 @@ map.addControl(new MapboxGeocoder({
   width: 150px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   font: 12px/12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  padding: 10px;
+  padding: 5px;
   position: absolute;
   right: 10px;
   z-index: 1;
 }
 
 .legend h4 {
-  margin: 0 0 10px;
+  margin: 0 0 0px;
+}
+
+.legend h5 {
+  margin: 0 0 0px;
 }
 
 .legend p {
@@ -83,17 +87,21 @@ map.addControl(new MapboxGeocoder({
 </style>
 
 <div id='legend' class='legend'>
-  <h4>Fire aftermath - address search</h4>
-  <h5>
+  <details open>
+  <summary><h4>Fire aftermath</h4></summary>
+  <h5><br>
     Covers areas in/around:<br>
     <li>Santa Rosa</li>
     <li>Sonoma</li>
     <li>Napa</li><br>
+
   Red is vegetation, burned houses are grey rubble<br><br>
+  Click/tap triangle to shrink legend<br><br>
 
   Author: <a href=https://www.twitter.com/robinkraft>@robinkraft</a><br>
   Timing: 2017-10-12 ~12:30pm<br>
   Source: © Digital Globe</h5>
+</details>
 </div>
 
 
