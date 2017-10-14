@@ -44,14 +44,16 @@ var beforeMap = new mapboxgl.Map({
     container: 'before',
     style: 'mapbox://styles/mapbox/light-v9',
     center: [0, 0],
-    zoom: 0
+    zoom: 0,
+    hash: true
 });
 
 var afterMap = new mapboxgl.Map({
     container: 'after',
     style: 'mapbox://styles/mapbox/dark-v9',
     center: [0, 0],
-    zoom: 0
+    zoom: 0,
+    hash: true
 });
 
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
