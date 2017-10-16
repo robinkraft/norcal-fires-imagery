@@ -161,10 +161,10 @@ beforeMap.on('load', function() {
 beforeMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 // Disable map rotation using right click + drag
-map.dragRotate.disable();
+beforeMap.dragRotate.disable();
 
 // Disable map rotation using touch rotation gesture
-map.touchZoomRotate.disableRotation();
+beforeMap.touchZoomRotate.disableRotation();
 
 function myFunction () {
     var shareCenter = beforeMap.getCenter(),
