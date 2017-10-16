@@ -84,6 +84,7 @@ var geocoder = new MapboxGeocoder({
 });
 
 map.addControl(geocoder);
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
