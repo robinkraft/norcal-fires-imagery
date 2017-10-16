@@ -15,11 +15,11 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@robinkraft" />
 <meta name="twitter:creator" content="@robinkraft" />
-<meta property="twitter:image"              content="https://i.imgur.com/tXxTnLh.png" />
+<meta property="twitter:image"              content="https://i.imgur.com/Irg7bJD.png" />
+<meta property="og:image"              content="https://i.imgur.com/Irg7bJD.png" />
 <meta property="og:url"                content="https://robinkraft.github.io/norcal-fires-imagery/compare.html" />
 <meta property="og:title"              content="Search for your address in this satellite map of NorCal fires" />
-<meta property="og:description"        content="Same map as before, now with address search & historical comparison. Oct. 12 imagery from Digital Globe. Coverage from Santa Rosa to Napa. By Overview News." />
-<meta property="og:image"              content="https://i.imgur.com/tXxTnLh.png" />
+<meta property="og:description"        content="Updated: Satellite fire map w/address search & compare mode. 10/14 in SR, Kenwood, Calistoga, 10/12 Sonoma to Napa. By Overview News © Digital Globe" />
 <meta property="fb:app_id" content="222035398332137" />
 
     <title>Satellite map of NorCal fires - 10/12 - compare mode</title>
@@ -90,6 +90,11 @@ body {
     bottom: 30px;
     z-index: 99;
 }
+
+.mapboxgl-ctrl-compass {
+display: none !important;
+}
+
 </style>
 
 
@@ -153,6 +158,14 @@ beforeMap.on('load', function() {
     });
 });
 
+beforeMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+// Disable map rotation using right click + drag
+map.dragRotate.disable();
+
+// Disable map rotation using touch rotation gesture
+map.touchZoomRotate.disableRotation();
+
 function myFunction () {
     var shareCenter = beforeMap.getCenter(),
         shareZoom = beforeMap.getZoom();
@@ -207,20 +220,17 @@ function myFunction () {
 
 <div id='legend' class='legend'>
   <details open>
-  <summary><h4>Fire aftermath - 10/12</h4></summary>
+  <summary><h4>Fire aftermath - 10/12 & 10/14</h4></summary>
   <h5><br>
     Click/tap triangle to shrink this box<br><br>
-    <a href="https://robinkraft.github.io/norcal-fires-imagery/saturday.html" target="_blank">View 10/14 imagery for SR, Kenwood, Calistoga.</a><br><br>
+    10/14: SR, SW Calistoga, Kenwood</a><br>
+    10/12: Glen Ellen/Sonoma to Napa<br><br>
 
-    <a href="https://robinkraft.github.io/norcal-fires-imagery/map.html" target="_blank">View 10/12 imagery only</a><br><br>
+    <a href="https://robinkraft.github.io/norcal-fires-imagery/map.html" target="_blank">View without compare mode</a><br><br>
+
     <a href="https://jsfiddle.net/robinkraft/opmmok2v/" target="_blank">Get embed code</a><br><br>
 
-    Covers areas in/around:<br>
-    <li>Santa Rosa</li>
-    <li>Sonoma</li>
-    <li>Napa</li><br>
-
-  Red is vegetation (<a href="http://www.mngeo.state.mn.us/chouse/airphoto/cir.html" target="_blank">read why</a>), burned houses are grey rubble. NOT realtime.<br><br>
+  Red in false color images is vegetation (<a href="http://www.mngeo.state.mn.us/chouse/airphoto/cir.html" target="_blank">read why</a>), burned houses are grey rubble. This is not realtime.<br><br>
   Author: <a href="https://www.twitter.com/robinkraft">@robinkraft</a><br>
   Email: <a href="mailto:rkraft4@gmail.com">rkraft4@gmail.com</a><br>
   Timing: 2017-10-12 ~12:30pm<br>

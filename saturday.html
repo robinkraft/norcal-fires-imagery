@@ -15,10 +15,10 @@
 <meta name="twitter:site" content="@robinkraft" />
 <meta name="twitter:creator" content="@robinkraft" />
 <meta property="twitter:image"              content="https://i.imgur.com/Irg7bJD.png" />
+<meta property="og:image"              content="https://i.imgur.com/Irg7bJD.png" />
 <meta property="og:url"                content="https://robinkraft.github.io/norcal-fires-imagery/saturday.html" />
 <meta property="og:title"              content="Saturday update: Search for your address in this satellite map of NorCal fires" />
 <meta property="og:description"        content="Satellite map update for Saturday 10/14 w/address search. Covers SR, Kenwood, SW Calistoga. © Digital Globe. By Overview News." />
-<meta property="og:image"              content="https://i.imgur.com/Irg7bJD.png" />
 <meta property="og:image:width"              content="1382" />
 <meta property="og:image:height"              content="1382" />
 
@@ -35,6 +35,11 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+
+
+.mapboxgl-ctrl-compass {
+display: none !important;
+}
 
     </style>
 
@@ -84,7 +89,16 @@ var geocoder = new MapboxGeocoder({
 });
 
 map.addControl(geocoder);
+
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+beforeMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+// Disable map rotation using right click + drag
+map.dragRotate.disable();
+
+// Disable map rotation using touch rotation gesture
+map.touchZoomRotate.disableRotation();
 
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
@@ -113,9 +127,11 @@ map.on('load', function() {
         map.getSource('single-point').setData(ev.result.geometry);
     });
 });
+
 </script>
 
 <style>
+
 .legend {
   background-color: #fff;
   border-radius: 3px;
@@ -162,7 +178,7 @@ map.on('load', function() {
   <summary><h4>Fire aftermath - 10/14</h4></summary>
   <h5><br>
   Click/tap triangle to shrink legend<br><br>
-  <a href="https://robinkraft.github.io/norcal-fires-imagery/compare.html" target="_blank" >View 10/12 regional map</a><br><br>
+  <a href="https://robinkraft.github.io/norcal-fires-imagery/compare.html" target="_blank" >View in 10/12-10/14 regional map</a><br><br>
   <a href="https://jsfiddle.net/robinkraft/zm1zkmca/" target="_blank">Embed code for your site</a><br><br>
 
     Covers areas in/around:<br>
