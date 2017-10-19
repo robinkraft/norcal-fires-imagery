@@ -17,8 +17,8 @@
 <meta property="twitter:image"              content="https://i.imgur.com/wnEPPTW.png" />
 <meta property="og:image"              content="https://i.imgur.com/wnEPPTW.png" />
 <meta property="og:url"                content="https://robinkraft.github.io/norcal-fires-imagery/map.html" />
-<meta property="og:title"              content="10/17 update: Search for your address in this satellite map of NorCal fires" />
-<meta property="og:description"        content="Tuesday 10/17 update!! Satellite fire map w/address search & compare mode. Sebastapol to Napa. By Overview News © Digital Globe. Hosting by Mapbox" />
+<meta property="og:title"              content="Smoke-free update: Search for your address in this satellite map of NorCal fires" />
+<meta property="og:description"        content="Updated: Annadel/Kenwood to Napa 10/18, SR 10/12. Satellite fire map w/address search. By Overview News © Digital Globe. Hosting by Mapbox" />
 <meta property="fb:app_id" content="222035398332137" />
 
 
@@ -73,8 +73,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/robinkraft/cj8nn4lvp7yoq2ro1klhjltw8',
-    center: [-122.591424, 38.433680],
-    zoom: 12,
+    center: [-122.701165, 38.477614],
+    zoom: 16,
     hash:true
 });
 
@@ -169,14 +169,16 @@ map.on('load', function() {
 
 <div id='legend' class='legend'>
   <details open>
-  <summary><h4>Fire aftermath - 10/17</h4></summary>
+  <summary><h4>Fire aftermath - 10/18</h4></summary>
   <h5><br>
   Click/tap triangle to shrink this box<br><br>
 
-  10/17: Sebastopol to SR to Napa</a><br><br>
   Red = vegetation, not fire.<br><br>
 
-  Yes, Tuesday 10/17 data! Lots of smoke, but worth it for those who haven't been able to see their homes yet. <a href="mailto:rkraft4@gmail.com">Email me if you disagree!</a> Be careful when interpreting smokey areas - it can be ambiguous.<br><br>
+  10/18: Annadel/Kenwood to Napa</a><br>
+  10/12: Central Santa Rosa (no burning since then)<br><br>
+
+  <a href="mailto:rkraft4@gmail.com">Email w/feedback/questions</a><br><br>
 
   <a href="https://robinkraft.github.io/norcal-fires-imagery/compare.html" target="_blank">View in compare mode</a><br>
   <a href="https://jsfiddle.net/robinkraft/dvnwy4tb/" target="_blank">Get embed code</a><br><br>

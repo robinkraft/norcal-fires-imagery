@@ -18,8 +18,8 @@
 <meta property="twitter:image"              content="https://i.imgur.com/2j8rZYb.png" />
 <meta property="og:image"              content="https://i.imgur.com/2j8rZYb.png" />
 <meta property="og:url"                content="https://robinkraft.github.io/norcal-fires-imagery/compare.html" />
-<meta property="og:title"              content="10/17 update: Search for your address in this satellite map of NorCal fires" />
-<meta property="og:description"        content="Tuesday 10/17 update!! Satellite fire map w/address search & compare mode. Sebastapol to Napa. By Overview News © Digital Globe. Hosting by Mapbox" />
+<meta property="og:title"              content="Smoke-free update: Search for your address in this satellite map of NorCal fires" />
+<meta property="og:description"        content="Updated: Annadel/Kenwood to Napa 10/18, SR 10/12.Tuesday 10/17 update!! Satellite fire map w/address search & compare mode. By Overview News © Digital Globe. Hosting by Mapbox" />
 <meta property="fb:app_id" content="222035398332137" />
 
     <title>Satellite map of NorCal fires - 10/12 - compare mode</title>
@@ -108,15 +108,15 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iaW5rcmFmdCIsImEiOiJQLUp2RU9NIn0.B20c6fiHx
 var beforeMap = new mapboxgl.Map({
     container: 'before',
     style: 'mapbox://styles/mapbox/satellite-streets-v9',
-    center: [-122.591424, 38.433680],
-    zoom: 12,
+    center: [-122.701165, 38.477614],
+    zoom: 16,
 });
 
 var afterMap = new mapboxgl.Map({
     container: 'after',
     style: 'mapbox://styles/robinkraft/cj8nn4lvp7yoq2ro1klhjltw8',
-    center: [-122.591424, 38.433680],
-    zoom: 12,
+    center: [-122.701165, 38.477614],
+    zoom: 16,
 });
 
 var afterMap = new mapboxgl.Compare(beforeMap, afterMap, {
@@ -220,14 +220,16 @@ function myFunction () {
 
 <div id='legend' class='legend'>
   <details open>
-  <summary><h4>Fire aftermath - 10/17</h4></summary>
+  <summary><h4>Fire aftermath - 10/18</h4></summary>
   <h5><br>
   Click/tap triangle to shrink this box<br><br>
 
-  10/17: Sebastopol to SR to Napa</a><br><br>
   Red = vegetation, not fire.<br><br>
 
-  Yes, Tuesday 10/17 data! Lots of smoke, but worth it for those who haven't been able to see their homes yet. <a href="mailto:rkraft4@gmail.com">Email me if you disagree!</a> Be careful when interpreting smokey areas - it can be ambiguous.<br><br>
+  10/18: Annadel/Kenwood to Napa</a><br><br>
+  10/12: Santa Rosa (no burning since then)<br><br>
+
+  <a href="mailto:rkraft4@gmail.com">Email w/feedback/questions</a><br><br>
 
   <a href="https://robinkraft.github.io/norcal-fires-imagery/map.html" target="_blank">View without compare mode</a><br>
   <a href="https://jsfiddle.net/robinkraft/opmmok2v/" target="_blank">Get embed code</a><br><br>
