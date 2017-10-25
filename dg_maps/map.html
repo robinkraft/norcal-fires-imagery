@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-30901313-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-30901313-1');
+</script>
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@robinkraft" />
+<meta name="twitter:creator" content="@robinkraft" />
+<meta property="twitter:image"              content="https://i.imgur.com/xM8DjXv.png" />
+<meta property="og:image"              content="https://i.imgur.com/xM8DjXv.png" />
+<meta property="og:url"                content="https://robinkraft.github.io/norcal-fires-imagery/map.html" />
+<meta property="og:title"              content="Smoke-free 10/18 update: Search for your address in this satellite map of NorCal fires" />
+<meta property="og:description"        content="Updated: Annadel/Kenwood to Napa 10/18, SR 10/12. Satellite fire map w/address search. By Overview News © Digital Globe. Hosting by Mapbox" />
+<meta property="fb:app_id" content="222035398332137" />
+
+
+    <title>Satellite map of NorCal fires - 10/18 + 10/12 imagery</title>
+
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+
+.mapboxgl-ctrl-compass {
+display: none !important;
+}
+
+    </style>
+
+</head>
+<body>
+
+ <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '222035398332137',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+  
+    FB.AppEvents.logPageView();
+  
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
+<div id='map'></div>
+
+<script>
+var token = 'pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqOHl4emkybjJpbDMzM3FxemRsbWgwaXYifQ.ONm0mMa_HGMtfR6RzXteFA'
+mapboxgl.accessToken = token;
+
+// var simple = {
+//     "version": 8,
+//     "sources": {
+//         "raster-tiles": {
+//             "type": "raster",
+//             "tiles": ['https://api.mapbox.com/v4/digitalglobe.cf354cc4/{z}/{x}/{y}@2x.png?access_token=' + token]
+//         }
+//     },
+//         "layers": [{
+//             "id": "simple-tiles",
+//             "type": "raster",
+//             "source": "raster-tiles",
+//             "minzoom": 0,
+//             "maxzoom": 22
+//         }]
+// };
+
+var vivid = {
+  "version": 8,
+  "sources": {
+    "simple-tiles": {
+      "type": "raster",
+      "url": "mapbox://digitalglobe.cf354cc4",
+      "tileSize": 256
+    }
+  },
+  "layers": [{
+    "id": "simple-tiles",
+    "type": "raster",
+    "source": "simple-tiles"
+  }]
+}
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    center: [-122.701165, 38.477614],
+    style: vivid,
+    zoom: 16,
+    hash:true
+});
+
+var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+});
+
+map.addControl(geocoder);
+
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+// Disable map rotation using right click + drag
+map.dragRotate.disable();
+
+// Disable map rotation using touch rotation gesture
+map.touchZoomRotate.disableRotation();
+
+// After the map style has loaded on the page, add a source layer and default
+// styling for a single point.
+map.on('load', function() {
+    map.addSource('single-point', {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+
+    map.addLayer({
+        "id": "point",
+        "source": "single-point",
+        "type": "circle",
+        "paint": {
+            "circle-radius": 8,
+            "circle-color": "#007cbf"
+        }
+    });
+
+    // Listen for the `geocoder.input` event that is triggered when a user
+    // makes a selection and add a symbol that matches the result.
+    geocoder.on('result', function(ev) {
+        map.getSource('single-point').setData(ev.result.geometry);
+    });
+});
+
+</script>
+
+<style>
+
+.legend {
+  background-color: #fff;
+  border-radius: 3px;
+  bottom: 30px;
+  width: 150px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font: 12px/12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+.legend h4 {
+  margin: 0 0 0px;
+}
+
+.legend h5 {
+  margin: 0 0 0px;
+}
+
+.legend p {
+  margin-left: 30px;
+  position: absolute;
+  display: block;
+  top: 0;
+}
+
+.legend div {
+  position: relative;
+}
+
+.legend div span {
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  opacity: 0.8;
+  background-color: #d49a66;
+}
+</style>
+
+<div id='legend' class='legend'>
+  <details open>
+  <summary><h4>Fire aftermath - 10/18</h4></summary>
+  <h5><br>
+  Click/tap triangle to shrink this box<br><br>
+
+  Red = vegetation, not fire.<br><br>
+
+  10/18: Annadel/Kenwood to Napa</a><br>
+  10/12: Central Santa Rosa (no burning since then)<br><br>
+
+  <a href="mailto:rkraft4@gmail.com">Email w/feedback/questions</a><br><br>
+
+  <a href="https://robinkraft.github.io/norcal-fires-imagery/compare.html" target="_blank">View in compare mode</a><br>
+  <a href="https://jsfiddle.net/robinkraft/dvnwy4tb/" target="_blank">Get embed code</a><br><br>
+
+  Red is vegetation, not fire (<a href="https://medium.com/@cgpadwick/santa-rosa-sonoma-napa-fires-bf7ba1c7a2cd" target="_blank">great explanation</a>), burned houses are grey rubble. This is not realtime.<br><br>
+
+  Author: <a href="https://www.twitter.com/robinkraft">@robinkraft</a><br>
+  Email: <a href="mailto:rkraft4@gmail.com">rkraft4@gmail.com</a><br>
+  <a href="https://github.com/robinkraft/norcal-fires-imagery">Github repo</a><br>
+  Source: Overview News // DigitalGlobe 2017</h5>
+</details>
+</div>
+
+
+</body>
+</html>
