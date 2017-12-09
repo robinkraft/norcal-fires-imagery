@@ -24,7 +24,7 @@ gdalwarp -s_srs EPSG:4326 -t_srs EPSG:3857 -of vrt -overwrite $OUTDIR/${fname}.v
 # The raw files from DG are HUGE - 1 gb each because they use very inefficient internal compression, if any at all.
 # This command uses more efficient compression and a more effective photometric interpretation (not sure what that is really - I was just using Stack Overflow :)
 # Otherwise gdal_translate will take literally days for a large set of large images.
-gdal_translate -co tiled=yes -co bigtiff=yes -co compress=jpeg -co photometric=ycbcr -co BLOCKXSIZE=256 -co BLOCKYSIZE=256 -of Gtiff $OUTDIR/mosaic_wm.vrt $OUTDIR/${fname}_wm.tif
+gdal_translate -co tiled=yes -co bigtiff=yes -co compress=jpeg -co photometric=ycbcr -co BLOCKXSIZE=256 -co BLOCKYSIZE=256 -of Gtiff $OUTDIR/${fname}_wm.vrt $OUTDIR/${fname}_final.tif
 
 # Use the Mapbox upload API to get the data into your systems and ready for mapping!
 # You'll see a job pop up in Mapbox Studio. When it's done, you can add the tileset to your map.
